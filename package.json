@@ -1,0 +1,22 @@
+{
+  "name": "weatherapi",
+  "version": "1.0.0",
+  "description": "a simple weather api",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eliteHacker33/weatherapi.git"
+  },
+  "keywords": [
+    "weatherapi"
+  ],
+  "author": "Ethan Westering",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eliteHacker33/weatherapi/issues"
+  },
+  "homepage": "https://github.com/eliteHacker33/weatherapi#readme"
+}

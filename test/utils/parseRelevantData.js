@@ -1,6 +1,6 @@
 const { assert } = require('chai');
 const sinon = require('sinon');
-const parseRelevantData = require('../../src/utils/parseRelevantData'); // Adjust path as needed
+const parseRelevantData = require('../../src/utils/parseRelevantData');
 
 describe('parseRelevantData', () => {
   let apiResponse;

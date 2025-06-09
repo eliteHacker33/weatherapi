@@ -5,7 +5,7 @@
   "main": "./src/app.js",
   "scripts": {
     "start": "node ./src/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha ./test/**/*.js",
     "start-dev": "nodemon --inspect app.js"
   },
   "repository": {
@@ -32,6 +32,7 @@
   "devDependencies": {
     "chai": "^5.2.0",
     "mocha": "^11.5.0",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "sinon": "^20.0.0"
   }
 }

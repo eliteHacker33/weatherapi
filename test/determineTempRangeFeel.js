@@ -1,5 +1,5 @@
 const { assert } = require('chai');
-const determineTempRange = require('../utils/determineTempRangeFeel');
+const determineTempRange = require('../src/utils/determineTempRangeFeel');
 
 describe('Determine Temperature Range', () => {
   const baseString = (range) => `By our indications, it feels ${range} outside`;

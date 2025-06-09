@@ -1,6 +1,6 @@
 const { createClient } = require('redis');
-const config = require('../../../weatherapi-backup/config/index');
-const logger = require('../../../weatherapi-backup/utils/CustomLogger');
+const config = require('../config/index');
+const logger = require('../utils/CustomLogger');
 
 const method = 'redisClient';
 const { redisHost, redisPort } = config;

@@ -1,0 +1,139 @@
+openapi: 3.0.0
+info:
+  title: Ethan Westering Weather API Docs
+  version: 1.0.0
+  description: A simple express API to fetch weather data from OpenWeatherMap
+  contact:
+    name: Ethan Westering
+    url: http://fakeurl.com
+    email: not.real.dont.send.to@example.com
+servers:
+  - url: http://localhost:3000
+    description: Development server
+tags:
+  - name: WeatherAPI
+    description: Weather API
+paths:
+  /weather/{latitude}/{longitude}:
+    get:
+      summary: Get weather data by latitude and longitude
+      description: Fetches weather data from OpenWeatherMap API based on latitude and longitude.
+      parameters:
+        - name: latitude
+          in: path
+          required: true
+          description: Latitude of the location
+          schema:
+            type: number
+            format: float
+            minimum: -90
+            maximum: 90
+        - name: longitude
+          in: path
+          required: true
+          description: Longitude of the location
+          schema:
+            type: number
+            format: float
+            minimum: -180
+            maximum: 180
+      responses:
+        200:
+          description: Successful response with weather data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dt:
+                    type: string
+                    format: date-time
+                    description: Current date and time of the weather data
+                  sunrise:
+                    type: string
+                    format: date-time
+                    description: Time of sunrise
+                  sunset:
+                    type: string
+                    format: date-time
+                    description: Time of sunset
+                  temp:
+                    type: number
+                    description: Current temperature in Celsius
+                  realFeel:
+                    type: number
+                    description: Perceived temperature in Celsius
+                  customFeel:
+                    type: number
+                    description: Custom calculated feel temperature
+                  rain:
+                    type: number
+                    nullable: true
+                    description: Rain volume for the last hour (mm), null if no rain
+                  snow:
+                    type: number
+                    nullable: true
+                    description: Snow volume for the last hour (mm), null if no snow
+                  humidity:
+                    type: number
+                    description: Current humidity percentage
+                  dewPoint:
+                    type: number
+                    description: Dew point temperature in Celsius
+                  uvi:
+                    type: number
+                    description: UV index
+                  visibility:
+                    type: number
+                    description: Visibility in meters
+                  windSpeed:
+                    type: number
+                    description: Speed of the wind in meters per second
+                  windGust:
+                    type: number
+                    description: Speed of wind gusts in meters per second
+                  summary:
+                    type: string
+                    description: Summary of the weather condition
+                  description:
+                    type: string
+                    description: Detailed description of the weather condition
+                  alerts:
+                    type: array
+                    description: Weather alerts
+                    items:
+                      type: object
+                      properties:
+                        event:
+                          type: string
+                          description: Name of the alert event
+                        start:
+                          type: string
+                          format: date-time
+                          description: Start time of the alert
+                        end:
+                          type: string
+                          format: date-time
+                          description: End time of the alert
+                        description:
+                          type: string
+                          description: Detailed description of the alert
+                        tags:
+                          type: array
+                          items:
+                            type: string
+                          description: Tags associated with the alert
+        400:
+          description: Bad request, invalid latitude or longitude
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        msg:
+                          type: string

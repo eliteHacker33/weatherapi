@@ -1,8 +1,10 @@
 const express = require('express');
 const { validationResult, param, matchedData } = require('express-validator');
 const weatherController = require('../controllers/weatherController');
+const logger = require('../utils/CustomLogger');
 
 const router = express.Router();
+const method = 'weather-routes';
 
 router.get(
   '/:latitude/:longitude',
@@ -22,10 +24,14 @@ router.get(
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
-    } else {
+    }
+    try {
       const { latitude, longitude } = matchedData(req);
       const weatherResults = await weatherController(latitude, longitude);
       return res.json(weatherResults);
+    } catch (error) {
+      logger.error(method, 'Error fetching weather data', error);
+      return res.status(500).json({ status: 500, msg: 'Internal Server Error' });
     }
   }
 );

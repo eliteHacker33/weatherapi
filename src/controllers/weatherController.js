@@ -1,6 +1,5 @@
 const logger = require('../utils/CustomLogger');
 const config = require('../config/index');
-const determineTempRangeFeel = require('../utils/determineTempRangeFeel');
 const parseRelevantData = require('../utils/parseRelevantData');
 const redisClient = require('../caching/redisClient');
 const logMethod = 'WeatherController';

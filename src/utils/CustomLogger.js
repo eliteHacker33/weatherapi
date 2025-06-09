@@ -36,6 +36,4 @@ const CustomLogger = class CustomLogger {
   }
 };
 
-//singleton pattern here with the logger
-
 module.exports = new CustomLogger();

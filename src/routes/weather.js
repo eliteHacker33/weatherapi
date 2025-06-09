@@ -1,5 +1,6 @@
 const express = require('express');
 const { validationResult, param, matchedData } = require('express-validator');
+const weatherController = require('../controllers/weatherController');
 
 const router = express.Router();
 
@@ -23,7 +24,7 @@ router.get(
       return res.status(400).json({ errors: errors.array() });
     } else {
       const { latitude, longitude } = matchedData(req);
-      //todo: call weatherController to handle logic
+      const weatherResults = await weatherController(latitude, longitude);
       return res.json(weatherResults);
     }
   }

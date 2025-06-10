@@ -4,7 +4,17 @@ simple weather api
 
 git clone the project to your local
 
+#to run locally without docker
 run npm install to get the dependencies
+
+docker pull redis
+docker run -d --name some-redis -p 6379:6379 redis:latest
+
+npm start 
+or
+npm run start-dev to run using nodemon
+
+#Easiest option
 
 run the following docker command to utilize the compose file:
 docker-compose up --build
